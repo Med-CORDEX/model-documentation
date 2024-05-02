@@ -4,9 +4,16 @@ label: Model 1
 label_extended: My model 1 extended label
 atmosphere:
   label: ALADIN 6.5
-  resolution: 0.25 degree
+  projection: lambert_conformal_conic
+  resolution: 25 km
+  computational-grid-size: 480x480
+  computational-grid-buffer: 8
   levels: 30
   TOA: 10 hPa
+  time-step: 450 s 
+  LBC-update-frequency: 6h
+  nudging: LBC # ( LBC | spectral | grid )
+  hydrostatic: yes
   physics:
     radiation:
       label: Lopez
@@ -18,14 +25,26 @@ atmosphere:
       description: blah blah
       reference: Smith et al. (2020)
       reference-url: http://doi.org/XXXX
+    # consider these below physics or model components?
+    urban:
+      label: none
+    lake:
+      label: none
+    glacier:
+      label: none
+
+land:
+  label: MyLand 7
+  projection: lambert_conformal_conic
+  resolution: 25 km
+hydrology:
+  label: MyLand 7
+  projection: lambert_conformal_conic
+  resolution: 25 km
 ocean:
   label: ORCA 5.2
   resolution: 0.25 degree
   levels: 40
-land:
-  label: MyLand 7
-  resolution: 1/12 degree
-  levels: 10
 ---
 
 Intro on the coupled model. 

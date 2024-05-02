@@ -43,6 +43,8 @@ Other tables can be built. E.g. for specific components, showing any info collec
       <th>Resolution</th>
       <th>Levels</th>
       <th>Radiation</th>
+      <th>Convection</th>
+      <th>Lake</th>
       <th>...</th>
     </tr>
   </thead>
@@ -54,6 +56,8 @@ Other tables can be built. E.g. for specific components, showing any info collec
       <td>{{ model.atmosphere.resolution }}</td>
       <td>{{ model.atmosphere.levels }}</td>
       <td>{{ model.atmosphere.physics.radiation.label }}</td>
+      <td>{{ model.atmosphere.physics.convection.label }}</td>
+      <td>{{ model.atmosphere.physics.lake.label }}</td>
       <td>...</td>
     </tr>
     {% endfor %}
