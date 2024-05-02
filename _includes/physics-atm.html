@@ -1,0 +1,23 @@
+{% assign model = site.models | where:"source_id",include.source_id | first %}
+
+<table>
+  <thead>
+    <tr>
+      <th>Physics</th>
+      <th>Scheme</th>
+      <th>Details</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for phys in model.atmosphere.physics %}
+    <tr>
+      <td>{{ phys | first | capitalize }}</td>
+      <td>{{ phys[1].label }}</td>
+      <td>{{ phys[1].description }}</td>
+      <td><a href="{{ phys[1].reference-url }}">{{ phys[1].reference }}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+

@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<main id="main" class="main-content" aria-label="Content">
+  <article>
+    {% include page-image.html %}
+    <div class="page-wrapper">
+      <header class="page-header">
+          <h1 id="page-title" class="page-title">{{ page.label_extended }} ({{ page.source_id }})</h1>
+      </header>
+      <div class="page-content">
+        {{ content }}
+
+        {% if page.share %}
+          {% include social-share.html %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="copyright">
+      <a href="{{ site.github.repository_url }}/blob/master/docs/{{ page.relative_path }}?plain=1">Edit</a> this page
+    </div>
+  </article>
+</main>
