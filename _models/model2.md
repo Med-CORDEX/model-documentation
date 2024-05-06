@@ -2,7 +2,7 @@
 source_id: model2A
 label: Model2 A
 label_extended: Model 2 title
-atmosphere:
+atmos:
   label: WRF v3.8.1
   resolution: 1 degree
   levels: 30
@@ -40,7 +40,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-{% include physics-atm.html source-id=page.source_id %}
+{% include physics.html component=atmos source-id=page.source_id %}
 
 ## Ocean
 
