@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for phys in model.atmosphere.physics %}
+    {% for phys in model[{{ include.component }}].physics %}
     <tr>
       <td>{{ phys | first | capitalize }}</td>
       <td>{{ phys[1].label }}</td>

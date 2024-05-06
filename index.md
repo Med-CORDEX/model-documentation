@@ -23,7 +23,7 @@ A brief summary table of all models and their basic components. This is built au
       <td><a href="{{ site.baseurl }}{{ model.url }}">{{ model.label }}</a></td>
       <td>{{ model.source_id }}</td>
       <td>{{ model.label_extended }}</td>
-      <td>{{ model.atmosphere.label }}</td>
+      <td>{{ model.atmos.label }}</td>
       <td>{{ model.land.label }}</td>
       <td>{{ model.ocean.label }}</td>
     </tr>
