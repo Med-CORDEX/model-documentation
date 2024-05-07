@@ -33,7 +33,7 @@ atmos:
       reference-url: https://doi.org/10.1256/00359000260498879
 
 land:
-  label: SURFEX 4.7
+  label: SURFEX v8.0
   levels: 30
   projection: lambert_conformal_conic
   resolution: 25 km
@@ -41,19 +41,31 @@ land:
     urban:
       label: none
     lake:
-      label: none
+      label: FLake vX.X
+      description:
+      reference: Le Moigne et al. (2016)
+      reference-url:
     glacier:
       label: none
+    hydrology:
+      label: ISBA-CTRIP vx.x
+      reference: Decharme et al. (2019) 
+      reference-url:  
 
-hydrology:
-  label: MyLand 7
-  projection: lambert_conformal_conic
-  resolution: 25 km
+aerosol:
+  label: TACTIC
+  reference: Michou et al. (2015)
+  reference-url: 
 
 ocean:
-  label: ORCA 5.2
-  resolution: 0.25 degree
-  levels: 40
+  label: NEMOMED12 v3.6
+  resolution: 1/12 degrees
+  levels: 75
+
+coupler:
+  label: OASIS3-MCT
+  reference: Craig et al. (2017)
+  reference-url:
 ---
 
 Intro on the coupled model. 
@@ -66,7 +78,7 @@ or even simpler if the image is already available online (no need to upload anyt
 
 Further information:
 
- * [CNRM-ALADIN at umr-cnrm.fr](https://www.umr-cnrm.fr/spip.php?article125&lang=en)
+ * [CNRM-RCSM at umr-cnrm.fr](https://www.umr-cnrm.fr/spip.php?article1098)
  * [List of Med-CORDEX simulations with {{ page.source_id }}](https://wcrp-cordex.github.io/simulation-status/CMIP6_downscaling_plans.html?search.search=med-12%20{{ page.source_id }})
 
 {% include toc %}

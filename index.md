@@ -13,8 +13,10 @@ A brief summary table of all models and their basic components. This is built au
       <th>source_id</th>
       <th>Extended label</th>
       <th>Atmosphere</th>
+      <th>Aerosol</th>
       <th>Land</th>
       <th>Ocean</th>
+      <th>coupler</th>
     </tr>
   </thead>
   <tbody>
@@ -24,8 +26,10 @@ A brief summary table of all models and their basic components. This is built au
       <td>{{ model.source_id }}</td>
       <td>{{ model.label_extended }}</td>
       <td>{{ model.atmos.label }}</td>
+      <td>{{ model.aerosol.label }}</td>
       <td>{{ model.land.label }}</td>
       <td>{{ model.ocean.label }}</td>
+      <td>{{ model.coupler.label }}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -42,9 +46,11 @@ Other tables can be built. E.g. for specific components, showing any info collec
       <th>Atmosphere</th>
       <th>Resolution</th>
       <th>Levels</th>
-      <th>Radiation</th>
+      <th>SW radiation</th>
+      <th>LW radiation</th>
       <th>Convection</th>
-      <th>Lake</th>
+      <th>Microphysics</th>
+      <th>PLB</th>
       <th>...</th>
     </tr>
   </thead>
@@ -55,9 +61,11 @@ Other tables can be built. E.g. for specific components, showing any info collec
       <td>{{ model.atmosphere.label }}</td>
       <td>{{ model.atmosphere.resolution }}</td>
       <td>{{ model.atmosphere.levels }}</td>
-      <td>{{ model.atmosphere.physics.radiation.label }}</td>
+      <td>{{ model.atmosphere.physics.radiation-sortwave.label }}</td>
+      <td>{{ model.atmosphere.physics.radiation-longwave.label }}</td>
       <td>{{ model.atmosphere.physics.convection.label }}</td>
-      <td>{{ model.atmosphere.physics.lake.label }}</td>
+      <td>{{ model.atmosphere.physics.microphysics.label }}</td>
+      <td>{{ model.atmosphere.physics.boundary-layer.label }}</td>
       <td>...</td>
     </tr>
     {% endfor %}
