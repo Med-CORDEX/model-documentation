@@ -10,13 +10,19 @@
     </tr>
   </thead>
   <tbody>
-    {% for phys in model[{{ include.component }}].physics %}
-    <tr>
-      <td>{{ phys | first | capitalize }}</td>
-      <td>{{ phys[1].label }}</td>
-      <td>{{ phys[1].description }}</td>
-      <td><a href="{{ phys[1].reference-url }}">{{ phys[1].reference }}</a></td>
-    </tr>
+    {% for phys in model[include.component].physics %}
+      {% assign physname = phys | first %}
+      {% if site.data.labels[physname] %}
+        {% assign physname = site.data.labels[physname] %}
+      {% else %}
+        {% assign physname = physname | capitalize %}
+      {% endif %}
+      <tr>
+        <td>{{ physname }}</td>
+        <td>{{ phys[1].label }}</td>
+        <td>{{ phys[1].description }}</td>
+        <td><a href="{{ phys[1].reference-url }}">{{ phys[1].reference }}</a></td>
+      </tr>
     {% endfor %}
   </tbody>
 </table>

@@ -72,7 +72,7 @@ Further information:
 {% include toc %}
 
 ## Atmosphere
-{% include resolution-summary.html source-id=page.source_id component="atmosphere" %}
+{% include resolution-summary.html source-id=page.source_id component="atmos" %}
 
 Describe atmos component. 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -81,7 +81,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Overall description of the physics. We can add a summary table built automatically from the front matter metadata:
 
-{% include physics.html component=atmos source-id=page.source_id %}
+{% include physics.html source-id=page.source_id component="atmos" %}
 
 ## Ocean
 {% include resolution-summary.html source-id=page.source_id component="ocean" %}
@@ -93,7 +93,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-{% include physics.html component=land source-id=page.source_id %}
+{% include physics.html source-id=page.source_id component="land" %}
 
 ### References
 
