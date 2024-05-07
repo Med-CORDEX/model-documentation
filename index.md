@@ -58,14 +58,14 @@ Other tables can be built. E.g. for specific components, showing any info collec
     {% for model in site.models %}
     <tr>
       <td><a href="{{ site.baseurl }}{{ model.url }}">{{ model.label }}</a></td>
-      <td>{{ model.atmosphere.label }}</td>
-      <td>{{ model.atmosphere.resolution }}</td>
-      <td>{{ model.atmosphere.levels }}</td>
-      <td>{{ model.atmosphere.physics.radiation-sortwave.label }}</td>
-      <td>{{ model.atmosphere.physics.radiation-longwave.label }}</td>
-      <td>{{ model.atmosphere.physics.convection.label }}</td>
-      <td>{{ model.atmosphere.physics.microphysics.label }}</td>
-      <td>{{ model.atmosphere.physics.boundary-layer.label }}</td>
+      <td>{{ model.atmos.label }}</td>
+      <td>{{ model.atmos.resolution }}</td>
+      <td>{{ model.atmos.levels }}</td>
+      <td>{{ model.atmos.physics.radiation-sortwave.label }}</td>
+      <td>{{ model.atmos.physics.radiation-longwave.label }}</td>
+      <td>{{ model.atmos.physics.convection.label }}</td>
+      <td>{{ model.atmos.physics.microphysics.label }}</td>
+      <td>{{ model.atmos.physics.boundary-layer.label }}</td>
       <td>...</td>
     </tr>
     {% endfor %}
