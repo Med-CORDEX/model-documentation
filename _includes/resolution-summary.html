@@ -1,6 +1,6 @@
 {% assign model = site.models | where:"source_id",include.source-id | first %}
 
 <p>
-  Resolution: {{ model[include.component].resolution }}, {{ model[include.component].levels }} levels
+  Resolution: {{ model[include.component].resolution }}, {{ model[include.component].grid.vertical-levels }} levels
 </p>
 
