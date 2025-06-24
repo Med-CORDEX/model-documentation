@@ -1,14 +1,14 @@
 ---
-source_id: RCSM6B
-label: RCSM v6 B
-label_extended: Regional Climate System Model, version 6B
+source_id: CNRM-RCSM6B
+label: CNRM-RCSM version 6B
+label_extended: Version 6B of the fully-coupled Regional Climate System Model (RCSM) of the Centre National de Recherches Meteorologiques (CNRM)
+reference: Sevault (2014)
+reference-url: https://doi.org/10.5281/zenodo.11066601
 parent:
   label: CNRM-RCSM6
   description:
   reference: Sevault (2024)
   reference-url: https://doi.org/10.5281/zenodo.11066601
-reference: Sevault F. 2014 and Darmaraki et al. 2019b
-reference-url: still the CNRM-RCSM6 web page
 
 atmos:
   label: CNRM-ALADIN65
@@ -21,7 +21,7 @@ atmos:
   computational-grid-buffer: 8
   levels: 91
   TOA: 0.01 hPa
-  time-step: 450 s 
+  time-step: &atmos-time-step 450 s 
   LBC-update-frequency: 6 h
   nudging: LBC # ( LBC | spectral | grid )
   hydrostatic: yes
@@ -46,7 +46,7 @@ atmos:
       description: Prognostic Condensates Microphysics and Transport, a mass-flux scheme ...
       reference: Piriou et al. (2007)
       reference-url:
-    planetary-boundary-layer:
+    boundary-layer:
       label: Cuxart
       description: 
       reference: Cuxart et al. (2000)

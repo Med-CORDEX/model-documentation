@@ -50,7 +50,7 @@ Other tables can be built. E.g. for specific components, showing any info collec
       <th>LW radiation</th>
       <th>Convection</th>
       <th>Microphysics</th>
-      <th>PLB</th>
+      <th>PBL</th>
       <th>...</th>
     </tr>
   </thead>
