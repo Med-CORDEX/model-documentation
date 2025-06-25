@@ -7,7 +7,7 @@ dynamic_components:
   - land_surface
   - ocean
   - sea_ice
-#prescribed_components:
+prescribed_components:
 omitted_components:
   - atmospheric_chemistry
   - land_ice
@@ -41,17 +41,17 @@ atmosphere:
   component: atmosphere
   name: CNRM-ALADIN65
   family: CNRM-ALADIN
-#  description: 
+  description: 
   references: 
     - citation: Nabat et al. (2020)
       doi: https://doi.org/10.5194/acp-20-8315-2020
-#  code_base:
+  code_base:
   coupled_with:
     - land_surface
     - ocean
     - sea_ice
   native_horizontal_grid: &atmosphere-hgrid
-#    description: 
+    description: 
     grid: plane_projection
     grid_mapping: lambert_conformal_conic
     region: limited_area
@@ -65,7 +65,7 @@ atmosphere:
     n_cells_full: 640x432
     n_cells_buffer: 8
   native-vertical-grid: &atmosphere-vgrid
-#    description:
+    description:
     coordinate: atmosphere_hybrid_height_coordinate
     n_z: 91
     top_of_model: 1
@@ -78,7 +78,7 @@ atmosphere:
     radiation-shortwave:
       name: FMR
       description: FMR 6 bands
-#      references: 
+      references: 
     radiation-longwave:
       name: RRTM
       description: Rapid radiative transfer model
@@ -99,7 +99,7 @@ atmosphere:
           doi: https://doi.org/
     boundary-layer:
       name: Cuxart
-#      description: 
+      description: 
       references:
         - citation: Cuxart et al. (2000)
           doi: https://doi.org/
@@ -127,11 +127,11 @@ land_surface:
   references:
     - citation: Decharme et al. (2019)
       doi: http://dx.doi.org/10.1029/2018MS001545
-#  code_base:
+  code_base:
   coupled_with:
     - atmosphere
   native_horizontal_grid:
-#    description: 
+    description: 
     grid: plane_projection
     grid_mapping: lambert_conformal_conic
     region: limited_area
@@ -144,14 +144,14 @@ land_surface:
   native_vertical_grid:
     coordinate: depth
     n_z: 30
-#    top_layer_thickness: 
-#    bottom_layer_thickness: 
+    top_layer_thickness: 
+    bottom_layer_thickness: 
     vertical_units: m
   # non-EMD
   physics:
     soil:
       name: ISBA
-#      land-use-dataset:
+      land-use-dataset:
       land-use-change: no
     urban:
       name: none
@@ -212,8 +212,14 @@ ocean:
   family: NEMO
   description: Regional version on the Mediterranean Sea of NEMOv3.6
   references:
-    - citation: Beuvier et al., 2012, Hamon et al., 2016, Waldman et al., 2018, Sevault 2024
-    - doi:
+    - citation: Beuvier et al. (2012)
+      doi:
+    - citation: Hamon et al. (2016)
+      doi:
+    - citation: Waldman et al. (2018)
+      doi:
+    - citation: Sevault (2024)
+      doi:
   code_base:
   native_horizontal_grid:
     description: ORCA tripolar grid
@@ -294,10 +300,6 @@ coupler:
 
 ---
 
-Regional Climate System models allow to reproduce medium scale atmospheric and oceanic phenomena on periods going from present time hindcast to scenarios for the 21st century.
-Atmosphere, aerosol, land surface and sea-ice are grouped in one executable (ALADIN), river routing (CTRIP), ocean (NEMOMED12); the models are coupled with OASIS3-MCT, the outputs are managed by XIOS.
-Each version of CNRM-RCSM6 uses the last versions of ALADIN, CTRIP and NEMOMED12 available at a given time.
-
 {{ page.description }}
 
 An example how to add an image. Upload to the images/ folder and voilà!
@@ -313,47 +315,49 @@ Further information:
 {% include toc %}
 
 ## Atmosphere
-{% include resolution-summary.html name=page.name component="atmos" %}
+{% include resolution-summary.html component="atmosphere" %}
 
 {{ page.atmosphere.description }}
 
 ### Physics
 
-{% include physics.html name=page.name component="atmosphere" %}
+{% include physics.html component="atmosphere" %}
 
 #### Radiation
 
 The radiative forcings include non-interactive greenhouse gases, tropospheric and stratospheric aerosols, ozone and solar. Greenhouse gases are CO2, N2O, CH4, CFC12 and a CFC11-equivalent species that includes the effects of all the other GHGs of the original data set (39 species). The solar constant uses the CMIP6 advised value (Matthes et al., 2017) including a 11-year cycle.
 
+{% include further-info-footer.html component="atmosphere"%}
+
 ## Land surface
-{% include resolution-summary.html name=page.name component="land_surface" %}
+{% include resolution-summary.html component="land_surface" %}
 
 {{ page.land_surface.description }}
+
+
+### Physics
+
+{% include physics.html component="land_surface" %}
 
 The soil hydrology uses the mixed form of the Richards equation to describe the water‐mass transfer within the soil via Darcy's law.
 The one‐dimensional Fourier law is used to simulate temperature diffusion.
 ISBA is sub-divided in 12 patches in order to account for the variety of soil and vegetation behaviors within a grid point.
 Energy and water balances are calculated separately on each patch."
 
-SURFEX v8.0 encompasses several submodules for modeling the interactions between the atmosphere, the ocean, the lakes and the land surface.
-The FLAKE model simulate surface fluxes over lakes, including both the Caspian and the Aral seas, and computes the temporal evolution of the vertical lake temperature profile from the surface mixing layer to the bottom (Le Moigne et al. 2016).
-The land surface is represented using the new ISBA-CTRIP coupled system (Decharme et al., 2019; Delire et al. 2019).
-ISBA calculates the time evolution of the energy, carbon and water budgets at the land surface while CTRIP simulates river discharges (including carbon transport) up to the ocean from the total runoff (and total soil carbon leaching) computed by ISBA."
-
-{% include physics.html name=page.name component="land_surface" %}
+{% include further-info-footer.html component="land_surface" %}
 
 ### References
 
  * Daniel M., Lemonsu A., Déqué M., Somot S., Alias A., Masson V. (2019) [Benefits of explicit urban parameterization in regional climate modeling to study climate and city interactions](doi:10.1007/s00382-018-4289-x). Climate Dynamics, 52(5-6), 2745-2764, doi:10.1007/s00382-018-4289-x
 
 ## Aerosol
-{% include resolution-summary.html name=page.name component="aerosol" %}
+{% include resolution-summary.html component="aerosol" %}
 
 Fully interactive: Sea salt, Desert Dust; Interactive + CMIP6 emission: Black Carbon, Organic Matter, Sulfate, Nitrate, Ammonium; CMIP6 dataset: Evolving Monthly AOD for Volcanic.
 Emissions: Natural (sea-salt and dust) emissions are dynamic (fully interactive). Fossil-fuel and biomass burning CMIP6 inventories are used for sulphate precursors, black carbon and organic matter.
 
 ## Ocean
-{% include resolution-summary.html name=page.name component="ocean" %}
+{% include resolution-summary.html component="ocean" %}
 
 SSTs outside the ocean model are daily interpolated from GCM monthly dataset.
 

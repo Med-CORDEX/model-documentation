@@ -1,8 +1,7 @@
-{% assign model = site.models | where:"name",include.name | first %}
-
 <p>
-  Resolution: {{ model[include.component].native_horizontal_grid.resolution_x }}
-              {{ model[include.component].native_horizontal_grid.horizontal_units }},
-              {{ model[include.component].native_vertical_grid.n_z }} levels
+Grid: {{ page[include.component].native_horizontal_grid.resolution_x }}
+      {{ page[include.component].native_horizontal_grid.horizontal_units }},
+      {{ page[include.component].native_horizontal_grid.n_cells}},
+      {{ page[include.component].native_vertical_grid.n_z }}L
 </p>
 

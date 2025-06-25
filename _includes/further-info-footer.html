@@ -1,0 +1,9 @@
+{% if include.component %}
+  {% assign refs = page[include.component].references %}
+{% else %}
+  {% assign refs = page.references %}
+{% endif %}
+<p>
+Further info: {% include references.html references=refs }}
+</p>
+
