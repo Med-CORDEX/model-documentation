@@ -10,7 +10,6 @@ A brief summary table of all models and their basic components. This is built au
   <thead>
     <tr>
       <th>Model</th>
-      <th>source_id</th>
       <th>Extended label</th>
       <th>Atmosphere</th>
       <th>Aerosol</th>
@@ -22,14 +21,13 @@ A brief summary table of all models and their basic components. This is built au
   <tbody>
     {% for model in site.models %}
     <tr>
-      <td><a href="{{ site.baseurl }}{{ model.url }}">{{ model.label }}</a></td>
-      <td>{{ model.source_id }}</td>
+      <td><a href="{{ site.baseurl }}{{ model.url }}">{{ model.name }}</a></td>
       <td>{{ model.label_extended }}</td>
-      <td>{{ model.atmos.label }}</td>
-      <td>{{ model.aerosol.label }}</td>
-      <td>{{ model.land.label }}</td>
-      <td>{{ model.ocean.label }}</td>
-      <td>{{ model.coupler.label }}</td>
+      <td>{{ model.atmosphere.name }}</td>
+      <td>{{ model.aerosol.name }}</td>
+      <td>{{ model.land_surface.name }}</td>
+      <td>{{ model.ocean.name }}</td>
+      <td>{{ model.coupler.name }}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -57,15 +55,15 @@ Other tables can be built. E.g. for specific components, showing any info collec
   <tbody>
     {% for model in site.models %}
     <tr>
-      <td><a href="{{ site.baseurl }}{{ model.url }}">{{ model.label }}</a></td>
-      <td>{{ model.atmos.label }}</td>
-      <td>{{ model.atmos.resolution }}</td>
-      <td>{{ model.atmos.levels }}</td>
-      <td>{{ model.atmos.physics.radiation-sortwave.label }}</td>
-      <td>{{ model.atmos.physics.radiation-longwave.label }}</td>
-      <td>{{ model.atmos.physics.convection.label }}</td>
-      <td>{{ model.atmos.physics.microphysics.label }}</td>
-      <td>{{ model.atmos.physics.boundary-layer.label }}</td>
+      <td><a href="{{ site.baseurl }}{{ model.url }}">{{ model.name }}</a></td>
+      <td>{{ model.atmosphere.name }}</td>
+      <td>{{ model.atmosphere.resolution }}</td>
+      <td>{{ model.atmosphere.levels }}</td>
+      <td>{{ model.atmosphere.physics.radiation-sortwave.name }}</td>
+      <td>{{ model.atmosphere.physics.radiation-longwave.name }}</td>
+      <td>{{ model.atmosphere.physics.convection.name }}</td>
+      <td>{{ model.atmosphere.physics.microphysics.name }}</td>
+      <td>{{ model.atmosphere.physics.boundary-layer.name }}</td>
       <td>...</td>
     </tr>
     {% endfor %}

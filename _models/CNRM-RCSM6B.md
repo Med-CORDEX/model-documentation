@@ -7,7 +7,7 @@ dynamic_components:
   - land_surface
   - ocean
   - sea_ice
-prescribed_components:
+#prescribed_components:
 omitted_components:
   - atmospheric_chemistry
   - land_ice
@@ -308,25 +308,25 @@ or even simpler if the image is already available online (no need to upload anyt
 Further information:
 
  * [CNRM-RCSM at umr-cnrm.fr](https://www.umr-cnrm.fr/spip.php?article1098)
- * [List of Med-CORDEX simulations with {{ page.source_id }}](https://wcrp-cordex.github.io/simulation-status/CMIP6_downscaling_plans.html?search.search=med-12%20{{ page.source_id }})
+ * [List of Med-CORDEX simulations with {{ page.name }}](https://wcrp-cordex.github.io/simulation-status/CMIP6_downscaling_plans.html?search.search=med-12%20{{ page.name }})
 
 {% include toc %}
 
 ## Atmosphere
-{% include resolution-summary.html source-id=page.source_id component="atmos" %}
+{% include resolution-summary.html name=page.name component="atmos" %}
 
 {{ page.atmosphere.description }}
 
 ### Physics
 
-{% include physics.html source-id=page.source_id component="atmos" %}
+{% include physics.html name=page.name component="atmosphere" %}
 
 #### Radiation
 
 The radiative forcings include non-interactive greenhouse gases, tropospheric and stratospheric aerosols, ozone and solar. Greenhouse gases are CO2, N2O, CH4, CFC12 and a CFC11-equivalent species that includes the effects of all the other GHGs of the original data set (39 species). The solar constant uses the CMIP6 advised value (Matthes et al., 2017) including a 11-year cycle.
 
 ## Land surface
-{% include resolution-summary.html source-id=page.source_id component="land" %}
+{% include resolution-summary.html name=page.name component="land_surface" %}
 
 {{ page.land_surface.description }}
 
@@ -340,20 +340,20 @@ The FLAKE model simulate surface fluxes over lakes, including both the Caspian a
 The land surface is represented using the new ISBA-CTRIP coupled system (Decharme et al., 2019; Delire et al. 2019).
 ISBA calculates the time evolution of the energy, carbon and water budgets at the land surface while CTRIP simulates river discharges (including carbon transport) up to the ocean from the total runoff (and total soil carbon leaching) computed by ISBA."
 
-{% include physics.html source-id=page.source_id component="land" %}
+{% include physics.html name=page.name component="land_surface" %}
 
 ### References
 
  * Daniel M., Lemonsu A., Déqué M., Somot S., Alias A., Masson V. (2019) [Benefits of explicit urban parameterization in regional climate modeling to study climate and city interactions](doi:10.1007/s00382-018-4289-x). Climate Dynamics, 52(5-6), 2745-2764, doi:10.1007/s00382-018-4289-x
 
 ## Aerosol
-{% include resolution-summary.html source-id=page.source_id component="aerosol" %}
+{% include resolution-summary.html name=page.name component="aerosol" %}
 
 Fully interactive: Sea salt, Desert Dust; Interactive + CMIP6 emission: Black Carbon, Organic Matter, Sulfate, Nitrate, Ammonium; CMIP6 dataset: Evolving Monthly AOD for Volcanic.
 Emissions: Natural (sea-salt and dust) emissions are dynamic (fully interactive). Fossil-fuel and biomass burning CMIP6 inventories are used for sulphate precursors, black carbon and organic matter.
 
 ## Ocean
-{% include resolution-summary.html source-id=page.source_id component="ocean" %}
+{% include resolution-summary.html name=page.name component="ocean" %}
 
 SSTs outside the ocean model are daily interpolated from GCM monthly dataset.
 
