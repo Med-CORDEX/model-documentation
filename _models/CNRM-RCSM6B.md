@@ -41,17 +41,17 @@ atmosphere:
   component: atmosphere
   name: CNRM-ALADIN65
   family: CNRM-ALADIN
-  description: 
+#  description: 
   references: 
     - citation: Nabat et al. (2020)
       doi: https://doi.org/10.5194/acp-20-8315-2020
-  code_base:
+#  code_base:
   coupled_with:
     - land_surface
     - ocean
     - sea_ice
   native_horizontal_grid: &atmosphere-hgrid
-    description: 
+#    description: 
     grid: plane_projection
     grid_mapping: lambert_conformal_conic
     region: limited_area
@@ -65,7 +65,7 @@ atmosphere:
     n_cells_full: 640x432
     n_cells_buffer: 8
   native-vertical-grid: &atmosphere-vgrid
-    description:
+#    description:
     coordinate: atmosphere_hybrid_height_coordinate
     n_z: 91
     top_of_model: 1
@@ -78,7 +78,7 @@ atmosphere:
     radiation-shortwave:
       name: FMR
       description: FMR 6 bands
-      references: 
+#      references: 
     radiation-longwave:
       name: RRTM
       description: Rapid radiative transfer model
@@ -90,20 +90,20 @@ atmosphere:
       description: Prognostic Condensates Microphysics and Transport, a mass-flux scheme ...
       references:
         - citation: Guérémy (2011)
-          doi: 
+          doi: https://doi.org/
     shallow-convection:
       name: PCMT
       description: Prognostic Condensates Microphysics and Transport, a mass-flux scheme ...
       references:
         - citation: Piriou et al. (2007)
-          doi:
+          doi: https://doi.org/
     boundary-layer:
       name: Cuxart
-      description: 
+#      description: 
       references:
         - citation: Cuxart et al. (2000)
-          doi:
- lateral-boundary-conditions:
+          doi: https://doi.org/
+  lateral-boundary-conditions:
     update-frequency: 6h
     nudging: LBCs with spectral nudging
     nesting: direct into GCM
@@ -127,11 +127,11 @@ land_surface:
   references:
     - citation: Decharme et al. (2019)
       doi: http://dx.doi.org/10.1029/2018MS001545
-  code_base:
+#  code_base:
   coupled_with:
     - atmosphere
   native_horizontal_grid:
-    description: 
+#    description: 
     grid: plane_projection
     grid_mapping: lambert_conformal_conic
     region: limited_area
@@ -144,14 +144,14 @@ land_surface:
   native_vertical_grid:
     coordinate: depth
     n_z: 30
-    top_layer_thickness: 
-    bottom_layer_thickness: 
+#    top_layer_thickness: 
+#    bottom_layer_thickness: 
     vertical_units: m
   # non-EMD
   physics:
     soil:
       name: ISBA
-      land-use-dataset:
+#      land-use-dataset:
       land-use-change: no
     urban:
       name: none
