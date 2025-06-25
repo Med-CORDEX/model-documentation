@@ -1,5 +1,3 @@
-{{ include.references | jsonify }}
-
 {% for ref in include.references %}
   <a href="{{ ref.doi }}">{{ ref.citation }}</a>
 {% endfor %}
