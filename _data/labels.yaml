@@ -1,10 +1,13 @@
 aerosol: Aerosol
-atmos: Atmosphere
-atmosChem: Atmospheric Chemistry
+atmosphere: Atmosphere
+atmospheric_chemistry: Atmospheric Chemistry
 land: Land Surface
-landIce: Land Ice
+land_ice: Land Ice
 ocean: Ocean
-ocnBgchem: Ocean Biogeochemistry
-seaIce: Sea Ice
+ocean_biogeochemistry: Ocean Biogeochemistry
+sea_ice: Sea Ice
 radiation-longwave: LW radiation
 radiation-shortwave: SW radiation
+shallow-convection: Shallow conv.
+boundary-layer: PBL
+river-routing: River routing

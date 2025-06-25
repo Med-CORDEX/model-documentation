@@ -6,7 +6,7 @@ title: "Med-CORDEX model documentation (test site)"
 description: "Med-CORDEX Phase 3 models"
 #baseurl: # the subpath of your site, e.g. "/blog"
 #url: # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-#logo: # path of site logo, e.g. "/images/logo.png"
+logo: /images/logo_medcordex_200_square.png
 date_format: "%B %-d, %Y"
 read_time: # reading time estimates, e.g. true
 words_per_minute: # 200

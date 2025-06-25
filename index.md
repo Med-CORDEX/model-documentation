@@ -2,15 +2,13 @@
 layout: default
 ---
 
-# Regional Coupled Models
-
-A brief summary table of all models and their basic components. This is built automatically from the model file front matter metadata.
+A brief summary table of all Med-CORDEX models and their basic components:
 
 <table>
   <thead>
     <tr>
       <th>Model</th>
-      <th>Extended label</th>
+      <th></th>
       <th>Atmosphere</th>
       <th>Aerosol</th>
       <th>Land</th>
@@ -57,8 +55,9 @@ Other tables can be built. E.g. for specific components, showing any info collec
     <tr>
       <td><a href="{{ site.baseurl }}{{ model.url }}">{{ model.name }}</a></td>
       <td>{{ model.atmosphere.name }}</td>
-      <td>{{ model.atmosphere.resolution }}</td>
-      <td>{{ model.atmosphere.levels }}</td>
+      <td>{{ model.atmosphere.native_horizontal_grid.resolution_x }}
+          {{ model.atmosphere.native_horizontal_grid.horizontal_units }}</td>
+      <td>{{ model.atmosphere.native_vertical_grid.n_z }}</td>
       <td>{{ model.atmosphere.physics.radiation-sortwave.name }}</td>
       <td>{{ model.atmosphere.physics.radiation-longwave.name }}</td>
       <td>{{ model.atmosphere.physics.convection.name }}</td>
@@ -69,5 +68,4 @@ Other tables can be built. E.g. for specific components, showing any info collec
     {% endfor %}
   </tbody>
 </table>
-
 
