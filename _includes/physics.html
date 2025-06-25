@@ -17,11 +17,12 @@
       {% else %}
         {% assign physname = physname | capitalize %}
       {% endif %}
+      {% assign refs = phys[1].references %}
       <tr>
         <td>{{ physname }}</td>
         <td>{{ phys[1].label }}</td>
         <td>{{ phys[1].description }}</td>
-        <td>{% include references.html references=phys[1].references %}</a></td>
+        <td>{% include references.html references=refs }} %}</a></td>
       </tr>
     {% endfor %}
   </tbody>
