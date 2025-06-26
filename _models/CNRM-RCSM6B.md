@@ -32,10 +32,12 @@ references:
 label: CNRM-RCSM version 6B
 label_extended: Version 6B of the fully-coupled Regional Climate System Model (RCSM) of the Centre National de Recherches Météorologiques (CNRM)
 parent:
-  name: CNRM-RCSM5
+  name: CNRM-RCSM6
+  description: CNRM-RCSM6B differs from its parent (CNRM-RCSM6) mainly in ...
   references:
     - citation: Sevault (2024)
       doi: https://doi.org/10.5281/zenodo.11066601
+flux_correction: no
 
 atmosphere:
   component: atmosphere
@@ -71,15 +73,15 @@ atmosphere:
     top_of_model: 1
     vertical_units: Pa
   # non-EMD
-  time-step: &atmosphere-tstep 450 s 
+  time_step_s: &atmosphere-tstep 450 
   nudging: LBC # ( LBC | spectral | grid )
   hydrostatic: yes
   physics:
-    radiation-shortwave:
+    radiation_shortwave:
       name: FMR
       description: FMR 6 bands
       references: 
-    radiation-longwave:
+    radiation_longwave:
       name: RRTM
       description: Rapid radiative transfer model
       references:
@@ -91,7 +93,7 @@ atmosphere:
       references:
         - citation: Guérémy (2011)
           doi: https://doi.org/
-    shallow-convection:
+    shallow_convection:
       name: PCMT
       description: Prognostic Condensates Microphysics and Transport, a mass-flux scheme ...
       references:
@@ -103,17 +105,17 @@ atmosphere:
       references:
         - citation: 
           doi: 
-    boundary-layer:
+    boundary_layer:
       name: Cuxart
       description: 
       references:
         - citation: Cuxart et al. (2000)
           doi: https://doi.org/
-  lateral-boundary-conditions:
-    update-frequency: 6h
+  lateral_boundary_conditions:
+    update_frequency: 6h
     nudging: LBCs with spectral nudging
     nesting: direct into GCM
-    relaxation-scheme: according to Davies 1979
+    relaxation_scheme: according to Davies 1979
 
 land_surface:
   component: land_surface
@@ -171,7 +173,7 @@ land_surface:
     glacier: # there is a land_ice component in EMD
       name: none
       comment: Simple parameterization to avoid snow accumulation
-    river-routing:
+    river_routing:
       name: ISBA-CTRIP vx.x
       family: TRIP
       description: >
@@ -183,15 +185,21 @@ land_surface:
           doi:  
         - citation: Munier and Decharme (2022)
           doi: https://doi.org/10.5194/essd-14-2239-2022
-      grid:
-        resolution: 1/12 degree
-        grid: regular
+      native_horizontal_grid:
+        description:
+        grid: regular_latitude_longitude
+        grid_mapping: latitude_longitude
+        region: limited_area
+        temporal_refinement: static
+        arrangement: arakawa_a # check
+        resolution_x: 1/12
+        resolution_y: 1/12
+        horizontal_units: degree
         n_cells: 1116x648
-      time-step: 1800 s
-      floodplains-parameterization: true
-      groundwater-scheme: true
-      carbon-to-ocean: false
-      spin-up: true
+      time_step_s: 1800
+      floodplains_parameterization: true
+      groundwater_scheme: true
+      carbon_to_ocean: false
 
 aerosol:
   component: aerosol
@@ -205,11 +213,11 @@ aerosol:
   embedded_in:
     - atmosphere
   native_horizontal_grid: *atmosphere-hgrid
-  native-vertical-grid: *atmosphere-vgrid
+  native_vertical_grid: *atmosphere-vgrid
   # non-EMD
   transport: specific transport scheme (semi-lagrangian)
   concentrations:
-  optical-radiative-properties:
+  optical_radiative_properties:
   dataset: None
 
 ocean:
@@ -246,31 +254,37 @@ ocean:
     n_z: 75
     vertical_units: m
   # non-EMD
-  time-step: 720 s
-  Red-Sea-representation: false
-  Black-Sea-representation:
-    model-domain: false
-    Black-Sea-input: E-P-R budget
-  Lateral-boundary-condition:
-    buffer-zone: false
-    open-boundary-condition: true
+  time_step_s: 720
+  feature_representation:
+    - name: red_sea
+      representation: none
+    - name: black_sea
+      representation: prescribed
+      input: e_p_r_budget
+    - name: rivers
+      representation: coupled
+      description: Coupled river input except for the Nile river
+    - name: nile_river
+      representation: prescribed
+      input: climatological_seasonal_cycle
+      description: >
+        A climatological seasonal cycle is applied, with a yearly average of 444 m3 s-1
+        (Erika Coppola, Med-CORDEX community,
+        https://www.medcordex.eu/Med-CORDEX-2 baseline-runs protocol.pdf)
+  lateral_boundary_condition:
+    buffer_zone: false
+    open_boundary_condition: true
     dataset: forcing GCM
-    unbiased-dataset: "True, with ORAS5"
+    unbiased_dataset: "True, with ORAS5"
   physics:
-    equation-of-seawater: TEOS10 (IOC et al., 2010)
+    equation_of_seawater: TEOS10 (IOC et al., 2010)
     advection: TVD for tracers, EEN for momentum
-    lateral-physics:
-    vertical-physics:
-  river-input:
-    coupled: "True, except for the Nile"
-    dataset: "True, for the Nile only"
-    Nile-representation: "a climatological seasonal cycle is applied, with a yearly average of 444 m3 .s−1 (Erika Coppola, Med-CORDEX community, https://www.medcordex.eu/Med-CORDEX-2 baseline-runs protocol.pdf)"
-  tidal-forcing: "False, enhancement of the bottom friction (Beuvier et al., 2012)"
-  chlorophyll-concentration: "3D climatology (Zhang et al. 2024, accepted)"
-  wave-representation: false
-  tide-representation: false
-  tuning: false
-  spin-up: true
+    lateral_physics:
+    vertical_physics:
+  tidal_forcing: "False, enhancement of the bottom friction (Beuvier et al., 2012)"
+  chlorophyll_concentration: "3D climatology (Zhang et al. 2024, accepted)"
+  wave_representation: false
+  tide_representation: false
 
 sea_ice:
   component: sea_ice
@@ -285,11 +299,10 @@ sea_ice:
     - atmosphere
     - ocean
   # non-EMD
-  time-step: *atmos-time-step
+  time_step_s: *atmosphere-tstep
   dynamics:
   thermodynamics:
   dataset: None
-  spin-up: true
 
 # non-EMD
 coupler:
@@ -302,7 +315,6 @@ coupler:
       doi: http://doi.org/10.5194/gmd-10-3297-2017
   code_base:
   coupling_frequency: 1hr
-  flux_correction: no
 
 ---
 
@@ -366,6 +378,9 @@ SSTs outside the ocean model are daily interpolated from GCM monthly dataset.
 
 {% include further-info-footer.html component="ocean" %}
 
+## Spin-up strategy
+
 ## Model tuning
 
-For the atmosphere, a machine-learning based approach called "history matching", adaptation to RCM of the approach described in [Hourdin et al. (2021)](https://doi.org/10.1029/2020MS002225) and [Couvreux et al. (2021)](https://doi.org/10.1029/2020MS002217) 
+For the atmosphere, a machine-learning based approach called "history matching", adaptation to RCM of the approach described in [Hourdin et al. (2021)](https://doi.org/10.1029/2020MS002225) and [Couvreux et al. (2021)](https://doi.org/10.1029/2020MS002217).
+No tuning for the river routing model.
