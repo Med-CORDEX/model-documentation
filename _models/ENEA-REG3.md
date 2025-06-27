@@ -5,12 +5,12 @@ dynamic_components:
   - atmosphere
   - land_surface
   - ocean
+  - ocean_biogeochemistry
 prescribed_components:
   - aerosol
 omitted_components:
   - atmospheric_chemistry
   - land_ice
-  - ocean_biogeochemistry
   - sea_ice
 description: >
 calendar: inherited # inherited|standard|365_day|360_day
@@ -58,7 +58,7 @@ atmosphere:
     top_of_model: 2000
     vertical_units: Pa
   # non-EMD
-  time-step: &atmosphere-tstep 450 s 
+  time_step_s: &atmosphere-tstep 450 
   nudging: LBC # ( LBC | spectral | grid )
   hydrostatic: yes
   physics:
@@ -98,11 +98,11 @@ atmosphere:
       references:
         - citation: 
           doi: 
-  lateral-boundary-conditions:
-    update-frequency: 6h
+  lateral_boundary_conditions:
+    update_frequency: 6h
     nudging: LBCs with spectral nudging
     nesting: direct into GCM
-    relaxation-scheme: according to Davies 1979
+    relaxation_scheme: according to Davies 1979
 
 land_surface:
   component: land_surface
@@ -140,7 +140,7 @@ land_surface:
     glacier: # there is a land_ice component in EMD
       name: none
       comment: Simple parameterization to avoid snow accumulation
-    river-routing:
+    river_routing:
       name: CaMa-Flood v4.10
       family: 
       description: >
@@ -151,11 +151,10 @@ land_surface:
         resolution: 1/12 degree
         grid: regular
         n_cells: 1116x648
-      time-step: 1800 s
-      floodplains-parameterization: true
-      groundwater-scheme: true
-      carbon-to-ocean: false
-      spin-up: true
+      time_step_s: 1800
+      floodplains_parameterization: true
+      groundwater_scheme: true
+      carbon_to_ocean: false
 
 ocean:
   component: ocean
@@ -185,31 +184,38 @@ ocean:
     n_z: 75
     vertical_units: m
   # non-EMD
-  time-step: 720 s
-  Red-Sea-representation: false
-  Black-Sea-representation:
-    model-domain: false
-    Black-Sea-input: E-P-R budget
-  Lateral-boundary-condition:
-    buffer-zone: false
-    open-boundary-condition: true
+  time_step_s: 720
+  lateral_boundary_condition:
+    buffer_zone: false
+    open_boundary_condition: true
     dataset: forcing GCM
-    unbiased-dataset: "True, with ORAS5"
+    unbiased_dataset: "True, with ORAS5"
   physics:
-    equation-of-seawater: TEOS10 (IOC et al., 2010)
+    equation_of_seawater: TEOS10 (IOC et al., 2010)
     advection: TVD for tracers, EEN for momentum
-    lateral-physics:
-    vertical-physics:
-  river-input:
-    coupled: "True, except for the Nile"
-    dataset: "True, for the Nile only"
-    Nile-representation: "a climatological seasonal cycle is applied, with a yearly average of 444 m3 .s−1 (Erika Coppola, Med-CORDEX community, https://www.medcordex.eu/Med-CORDEX-2 baseline-runs protocol.pdf)"
-  tidal-forcing: "False, enhancement of the bottom friction (Beuvier et al., 2012)"
-  chlorophyll-concentration: "3D climatology (Zhang et al. 2024, accepted)"
-  wave-representation: false
-  tide-representation: false
-  tuning: false
-  spin-up: true
+    lateral_physics:
+    vertical_physics:
+  tidal_forcing: "False, enhancement of the bottom friction (Beuvier et al., 2012)"
+  chlorophyll_concentration: "3D climatology (Zhang et al. 2024, accepted)"
+  wave_representation: false
+  tide_representation: false
+
+ocean_biogeochemistry:
+  component: ocean_biogeochemistry
+  name: BFM-OGSTM vX.Y
+  family: BFM
+  description: >
+    The BFM-OGSTM coupled software is essentially a numerical solver for the
+    transport reaction equations where the reaction terms are defined by the
+    Biogeochemical Flux Model (BFM) framework.
+  references:
+    - citation: Lazzari and Bolzon (2023)
+      doi: https://www.bfm-community.eu/files/bfm-ogstm-manual_r1.0_202306.pdf
+  code_base: https://github.com/inogs/ogstm
+  coupled_with:
+    - ocean
+  native_horizontal_grid:
+  native_vertical_grid:
 
 # non-EMD
 coupler:
@@ -278,6 +284,8 @@ SSTs outside the ocean model are daily interpolated from GCM monthly dataset.
 
 {% include further-info-footer.html component="ocean" %}
 
+## Spin-up strategy
+
 ## Model tuning
 
-For the atmosphere, a machine-learning based approach called "history matching", adaptation to RCM of the approach described in [Hourdin et al. (2021)](https://doi.org/10.1029/2020MS002225) and [Couvreux et al. (2021)](https://doi.org/10.1029/2020MS002217) 
+
