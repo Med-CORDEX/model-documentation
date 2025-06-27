@@ -18,6 +18,6 @@ You can contribute to this effort in several ways:
 * If you are a model developer, make sure your model is well documented.
   You can start creating the entry for your model by using any of the other models in [_models/](_models/) as a template.
   Fork the repository and make a pull request when you are ready to see the result.
-  > [!IMPORTANT]
-  > The YAML format is extremely sensitive to indentation.
-  > Double-check the different indentation levels in your file.
+> [!IMPORTANT]
+> The YAML format is extremely sensitive to indentation.
+> Double-check the different indentation levels in your file.
