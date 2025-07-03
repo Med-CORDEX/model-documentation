@@ -13,7 +13,12 @@ omitted_components:
   - land_ice
   - ocean_biogeochemistry
 description: >
-  Regional Climate System models allow to reproduce medium scale atmospheric and oceanic phenomena on periods going from present time hindcast to scenarios for the 21st century. Atmosphere, aerosol, land surface and sea-ice are grouped in one executable (ALADIN), river routing (CTRIP), ocean (NEMOMED12); the models are coupled with OASIS3-MCT, the outputs are managed by XIOS. Each version of CNRM-RCSM6 uses the last versions of ALADIN, CTRIP and NEMOMED12 available at a given time.
+  Regional Climate System models allow to reproduce medium scale atmospheric and oceanic
+  phenomena on periods going from present time hindcast to scenarios for the 21st century.
+  Atmosphere, aerosol, land surface and sea-ice are grouped in one executable (ALADIN),
+  river routing (CTRIP), ocean (NEMOMED12); the models are coupled with OASIS3-MCT,
+  the outputs are managed by XIOS. Each version of CNRM-RCSM6 uses the last versions of
+  ALADIN, CTRIP and NEMOMED12 available at a given time.
 calendar: standard # inherited|standard|365_day|360_day
 release_year: 2023
 references:
@@ -37,7 +42,9 @@ atmosphere:
   component: atmosphere
   name: CNRM-ALADIN64M1-SN
   family: CNRM-ALADIN
-  description: regional climate model developed at CNRM, sharing the same physics as the global model ARPEGE-Climat (Roehrig et al. 2020)
+  description: >
+    Regional climate model developed at CNRM, sharing the same physics as the global
+    model ARPEGE-Climat (Roehrig et al. 2020).
   references: 
     - citation: Nabat et al. (2020)
       doi: https://doi.org/10.5194/acp-20-8315-2020
@@ -53,9 +60,9 @@ atmosphere:
     region: limited_area
     temporal_refinement: static
     arrangement: arakawa_c # check
-    resolution_x: 12500 
-    resolution_y: 12500
-    horizontal_units: m
+    resolution_x: 12.5 
+    resolution_y: 12.5
+    horizontal_units: km
     n_cells: 613x405
     # non-EMD
     n_cells_full: 629x421
@@ -64,7 +71,7 @@ atmosphere:
     description:
     coordinate: atmosphere_hybrid_height_coordinate
     n_z: 91
-    top_of_model: 0.01 hPa
+    top_of_model: 1
     vertical_units: Pa
   # non-EMD
   time_step_s: &atmosphere-tstep 450 
@@ -75,29 +82,28 @@ atmosphere:
       name: FMR
       description: FMR 6 bands
       references: 
-        - citation: Fouquart and Bonnel (1980); Morcrette et al. (2008)
+        - citation: Fouquart and Bonnel (1980)
           doi: https://doi.org/10.1175/2008MWR2363.1
+        - citation: Morcrette et al. (2008)
+          doi: 
     radiation_longwave:
       name: RRTM
       description: Rapid radiative transfer model
       references:
         - citation: Mlawer et al. (1997)
           doi: https://doi.org/10.1029/97JD00237
-    convection:
+    convection: &conv-scheme
       name: PCMT
-      description: Prognostic Condensates Microphysics and Transport : a convection scheme representing in a unified way dry, shallow and deep convection
+      description: Prognostic Condensates Microphysics and Transport: a convection scheme representing in a unified way dry, shallow and deep convection.
       references:
-        - citation: Piriou et al. (2007); Guérémy (2011)
-          doi: [https://doi.org/](https://doi.org/10.1175/2007JAS2144.1; https://doi.org/10.1111/j.1600-0870.2011.00521.x)
-    shallow_convection:
-      name: PCMT
-      description: Prognostic Condensates Microphysics and Transport : a convection scheme representing in a unified way dry, shallow and deep convection
-      references:
-        - citation: Piriou et al. (2007); Guérémy (2011)
-          doi: https://doi.org/10.1175/2007JAS2144.1; https://doi.org/10.1111/j.1600-0870.2011.00521.x
+        - citation: Piriou et al. (2007)
+          doi: https://doi.org/10.1175/2007JAS2144.1
+        - citation: Guérémy (2011)
+          doi: https://doi.org/10.1111/j.1600-0870.2011.00521.x
+    shallow_convection: *conv-scheme
     microphysics:
       name: Lopez 2002
-      description: large-scale microphysics scheme which describes liquid and ice particles as well as rain and snow using prognostic variables
+      description: Large-scale microphysics scheme which describes liquid and ice particles as well as rain and snow using prognostic variables.
       references: 
         - citation: Lopez et al. (2002)
           doi: https://doi.org/10.1256/00359000260498879
@@ -132,9 +138,9 @@ land_surface:
     region: limited_area
     temporal_refinement: static
     arrangement: arakawa_a # check
-    resolution_x: 12500 
-    resolution_y: 12500
-    horizontal_units: m
+    resolution_x: 12.5 
+    resolution_y: 12.5
+    horizontal_units: km
     n_cells: 613x405 # check
   native_vertical_grid:
     coordinate: depth
@@ -190,9 +196,9 @@ land_surface:
 
 aerosol:
   component: aerosol
-  name: TACTIC (Tropospheric Aerosols for Climate In CNRM)
+  name: TACTIC
   family: TACTIC
-  description:
+  description: Tropospheric Aerosols for Climate In CNRM
   references:
     - citation: Nabat et al. (2020)
       doi: 
