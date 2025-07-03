@@ -380,6 +380,8 @@ SSTs outside the ocean model are daily interpolated from GCM monthly dataset.
 
 ## Spin-up strategy
 
+The different components have been spun up independently. The ocean component ... 
+
 ## Model tuning
 
 For the atmosphere, a machine-learning based approach called "history matching", adaptation to RCM of the approach described in [Hourdin et al. (2021)](https://doi.org/10.1029/2020MS002225) and [Couvreux et al. (2021)](https://doi.org/10.1029/2020MS002217).
