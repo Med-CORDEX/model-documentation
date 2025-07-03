@@ -1,5 +1,5 @@
 ---
-name: CNRM-RCSM6B
+name: CNRM-RCSM6B-SN
 family: CNRM-RCSM
 dynamic_components:
   - aerosol
@@ -13,14 +13,8 @@ omitted_components:
   - land_ice
   - ocean_biogeochemistry
 description: >
-  Regional Climate System models allow to reproduce medium scale atmospheric and
-  oceanic phenomena on periods going from present time hindcast to scenarios for
-  the 21st century. Atmosphere, aerosol, land surface and sea-ice are grouped
-  in one executable (ALADIN), river routing (CTRIP), ocean (NEMOMED12); the
-  models are coupled with OASIS3-MCT, the outputs are managed by XIOS. Each
-  version of CNRM-RCSM6 uses the last versions of ALADIN, CTRIP and NEMOMED12
-  available at a given time.
-calendar: inherited # inherited|standard|365_day|360_day
+  Regional Climate System models allow to reproduce medium scale atmospheric and oceanic phenomena on periods going from present time hindcast to scenarios for the 21st century. Atmosphere, aerosol, land surface and sea-ice are grouped in one executable (ALADIN), river routing (CTRIP), ocean (NEMOMED12); the models are coupled with OASIS3-MCT, the outputs are managed by XIOS. Each version of CNRM-RCSM6 uses the last versions of ALADIN, CTRIP and NEMOMED12 available at a given time.
+calendar: standard # inherited|standard|365_day|360_day
 release_year: 2023
 references:
   - citation: Sevault (2024)
@@ -41,9 +35,9 @@ flux_correction: no
 
 atmosphere:
   component: atmosphere
-  name: CNRM-ALADIN65
+  name: CNRM-ALADIN64M1-SN
   family: CNRM-ALADIN
-  description: 
+  description: regional climate model developed at CNRM, sharing the same physics as the global model ARPEGE-Climat (Roehrig et al. 2020)
   references: 
     - citation: Nabat et al. (2020)
       doi: https://doi.org/10.5194/acp-20-8315-2020
@@ -59,18 +53,18 @@ atmosphere:
     region: limited_area
     temporal_refinement: static
     arrangement: arakawa_c # check
-    resolution_x: 12.5 
-    resolution_y: 12.5 
-    horizontal_units: km
+    resolution_x: 12500 
+    resolution_y: 12500
+    horizontal_units: m
     n_cells: 613x405
     # non-EMD
-    n_cells_full: 640x432
+    n_cells_full: 629x421
     n_cells_buffer: 8
   native-vertical-grid: &atmosphere-vgrid
     description:
     coordinate: atmosphere_hybrid_height_coordinate
     n_z: 91
-    top_of_model: 1
+    top_of_model: 0.01 hPa
     vertical_units: Pa
   # non-EMD
   time_step_s: &atmosphere-tstep 450 
@@ -81,6 +75,8 @@ atmosphere:
       name: FMR
       description: FMR 6 bands
       references: 
+        - citation: Fouquart and Bonnel (1980); Morcrette et al. (2008)
+          doi: https://doi.org/10.1175/2008MWR2363.1
     radiation_longwave:
       name: RRTM
       description: Rapid radiative transfer model
@@ -89,28 +85,28 @@ atmosphere:
           doi: https://doi.org/10.1029/97JD00237
     convection:
       name: PCMT
-      description: Prognostic Condensates Microphysics and Transport, a mass-flux scheme ...
+      description: Prognostic Condensates Microphysics and Transport : a convection scheme representing in a unified way dry, shallow and deep convection
       references:
-        - citation: Guérémy (2011)
-          doi: https://doi.org/
+        - citation: Piriou et al. (2007); Guérémy (2011)
+          doi: [https://doi.org/](https://doi.org/10.1175/2007JAS2144.1; https://doi.org/10.1111/j.1600-0870.2011.00521.x)
     shallow_convection:
       name: PCMT
-      description: Prognostic Condensates Microphysics and Transport, a mass-flux scheme ...
+      description: Prognostic Condensates Microphysics and Transport : a convection scheme representing in a unified way dry, shallow and deep convection
       references:
-        - citation: Piriou et al. (2007)
-          doi: https://doi.org/
+        - citation: Piriou et al. (2007); Guérémy (2011)
+          doi: https://doi.org/10.1175/2007JAS2144.1; https://doi.org/10.1111/j.1600-0870.2011.00521.x
     microphysics:
-      name: 
-      description: 
-      references:
-        - citation: 
-          doi: 
+      name: Lopez 2002
+      description: large-scale microphysics scheme which describes liquid and ice particles as well as rain and snow using prognostic variables
+      references: 
+        - citation: Lopez et al. (2002)
+          doi: https://doi.org/10.1256/00359000260498879
     boundary_layer:
-      name: Cuxart
+      name: Cuxart 2000
       description: 
       references:
         - citation: Cuxart et al. (2000)
-          doi: https://doi.org/
+          doi: https://doi.org/10.1002/qj.49712656202
   lateral_boundary_conditions:
     update_frequency: 6h
     nudging: LBCs with spectral nudging
@@ -122,16 +118,7 @@ land_surface:
   name: SURFEX v8.0
   family: SURFEX
   description: >
-    SURFEXv8.0 encompasses several submodules for modeling the interactions between
-    the atmosphere, the ocean, the lakes and the land surface. The FLAKE model
-    simulate surface fluxes over lakes, including both the Caspian and the Aral
-    seas, and computes the temporal evolution of the vertical lake temperature
-    profile from the surface mixing layer to the bottom (Le Moigne et al. 2016).
-    The land surface is represented using the new ISBA-CTRIP coupled system
-    (Decharme et al., 2019; Delire et al. 2019). ISBA calculates the time evolution
-    of the energy, carbon and water budgets at the land surface while CTRIP
-    simulates river discharges (including carbon transport) up to the ocean from
-    the total runoff (and total soil carbon leaching) computed by ISBA.
+    SURFEXv8.0 encompasses several submodules for modeling the interactions between the atmosphere, the ocean, the lakes and the land surface. The FLAKE model simulate surface fluxes over lakes, including both the Caspian and the Aral seas, and computes the temporal evolution of the vertical lake temperature profile from the surface mixing layer to the bottom (Le Moigne et al. 2016). The land surface is represented using the new ISBA-CTRIP coupled system (Decharme et al., 2019; Delire et al. 2019). ISBA calculates the time evolution of the energy, carbon and water budgets at the land surface while CTRIP simulates river discharges (including carbon transport) up to the ocean from the total runoff (and total soil carbon leaching) computed by ISBA.
   references:
     - citation: Decharme et al. (2019)
       doi: http://dx.doi.org/10.1029/2018MS001545
@@ -145,15 +132,15 @@ land_surface:
     region: limited_area
     temporal_refinement: static
     arrangement: arakawa_a # check
-    resolution_x: 25 
-    resolution_y: 25 
-    horizontal_units: km
+    resolution_x: 12500 
+    resolution_y: 12500
+    horizontal_units: m
     n_cells: 613x405 # check
   native_vertical_grid:
     coordinate: depth
-    n_z: 30
-    top_layer_thickness: 
-    bottom_layer_thickness: 
+    n_z: 14
+    top_layer_thickness: 0.01 
+    bottom_layer_thickness: 12
     vertical_units: m
   # non-EMD
   physics:
@@ -174,7 +161,7 @@ land_surface:
       name: none
       comment: Simple parameterization to avoid snow accumulation
     river_routing:
-      name: ISBA-CTRIP
+      name: ISBA-CTRIP vx.x
       family: TRIP
       description: >
         CTRIP is a river routing model used to convert the daily runoff simulated
@@ -182,7 +169,7 @@ land_surface:
         1/12-degree resolution.
       references:
         - citation: Decharme et al. (2019) 
-          doi: https://doi.org/10.1029/2018MS001545
+          doi:  
         - citation: Munier and Decharme (2022)
           doi: https://doi.org/10.5194/essd-14-2239-2022
       native_horizontal_grid:
@@ -203,8 +190,8 @@ land_surface:
 
 aerosol:
   component: aerosol
-  name: TACTIC v
-  family: AER # check
+  name: TACTIC (Tropospheric Aerosols for Climate In CNRM)
+  family: TACTIC
   description:
   references:
     - citation: Nabat et al. (2020)
@@ -217,7 +204,7 @@ aerosol:
   # non-EMD
   transport: specific transport scheme (semi-lagrangian)
   concentrations:
-  optical_radiative_properties:
+  optical_radiative_properties: look-up tables (Nabat et al. 2020)
   dataset: None
 
 ocean:
