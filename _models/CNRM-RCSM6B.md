@@ -94,7 +94,7 @@ atmosphere:
           doi: https://doi.org/10.1029/97JD00237
     convection: &conv-scheme
       name: PCMT
-      description: Prognostic Condensates Microphysics and Transport: a convection scheme representing in a unified way dry, shallow and deep convection.
+      description: Prognostic Condensates Microphysics and Transport is a convection scheme representing in a unified way dry, shallow and deep convection.
       references:
         - citation: Piriou et al. (2007)
           doi: https://doi.org/10.1175/2007JAS2144.1
