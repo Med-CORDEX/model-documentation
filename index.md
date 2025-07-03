@@ -3,6 +3,7 @@ layout: default
 ---
 
 A brief summary table of all Med-CORDEX models and their basic components:
+<p style="color:red; font-weight:bold;">This site is under construction. Model details cannot be trusted at all.</p>
 
 <table>
   <thead>
@@ -12,7 +13,9 @@ A brief summary table of all Med-CORDEX models and their basic components:
       <th>Atmosphere</th>
       <th>Aerosol</th>
       <th>Land</th>
+      <th>River</th>
       <th>Ocean</th>
+      <th>Ocn biogeochemistry</th>
       <th>coupler</th>
     </tr>
   </thead>
@@ -24,7 +27,9 @@ A brief summary table of all Med-CORDEX models and their basic components:
       <td>{{ model.atmosphere.name }}</td>
       <td>{{ model.aerosol.name }}</td>
       <td>{{ model.land_surface.name }}</td>
+      <td>{{ model.land_surface.physics.river_routing.name }}</td>
       <td>{{ model.ocean.name }}</td>
+      <td>{{ model.ocean_biogeochemistry.name }}</td>
       <td>{{ model.coupler.name }}</td>
     </tr>
     {% endfor %}
