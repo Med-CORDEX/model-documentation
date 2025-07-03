@@ -2,14 +2,15 @@
 name: RegCM-ES1-1
 family: RegCM-ES
 dynamic_components:
-  - aerosol
   - atmosphere
   - land_surface
   - ocean
-  - ocean_biogeochemistry
-  - sea_ice
+  - river
 prescribed_components:
 omitted_components:
+  - aerosol
+  - sea_ice
+  - ocean_biogeochemistry
   - atmospheric_chemistry
   - land_ice
 description: >
@@ -55,8 +56,8 @@ atmosphere:
   family: RegCM
   description: 
   references: 
-    - citation: Nabat et al. (2020)
-      doi: https://doi.org/10.5194/acp-20-8315-2020
+    - citation: Giorgi et al, (2023)
+      doi: https://doi.org/10.1029/2022JD038199
   code_base:
   coupled_with:
     - land_surface
@@ -65,13 +66,13 @@ atmosphere:
   native_horizontal_grid: &atmosphere-hgrid
     description: 
     grid: plane_projection
-    grid_mapping: lambert_conformal_conic
+    grid_mapping: rotated_latitude_longitude
     region: limited_area
     temporal_refinement: static
     arrangement: arakawa_c # check
-    resolution_x: 12.5 
-    resolution_y: 12.5 
-    horizontal_units: km
+    resolution_x: 0.11
+    resolution_y: 0.11 
+    horizontal_units: degrees
     n_cells: 613x405
     # non-EMD
     n_cells_full: 640x432
