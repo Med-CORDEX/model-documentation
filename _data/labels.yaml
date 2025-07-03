@@ -6,8 +6,8 @@ land_ice: Land Ice
 ocean: Ocean
 ocean_biogeochemistry: Ocean Biogeochemistry
 sea_ice: Sea Ice
-radiation-longwave: LW radiation
-radiation-shortwave: SW radiation
-shallow-convection: Shallow conv.
-boundary-layer: PBL
-river-routing: River routing
+radiation_longwave: LW radiation
+radiation_shortwave: SW radiation
+shallow_convection: Shallow conv.
+boundary_layer: PBL
+river_routing: River routing

@@ -77,7 +77,7 @@ atmosphere:
     # non-EMD
     n_cells_full: 640x432
     n_cells_buffer: 8
-  native-vertical-grid: &atmosphere-vgrid
+  native_vertical_grid: &atmosphere-vgrid
     description:
     coordinate: atmosphere_hybrid_height_coordinate
     n_z: 91
@@ -257,7 +257,7 @@ ocean:
     mean_resolution_km:  
     horizontal_units: degree
     n_cells: 567x264
-  native-vertical-grid:
+  native_vertical_grid:
     description: >
       75 vertical levels using a vertical z-coordinate with partial step bathymetry
       formulation (Barnier et al., 2006), from 1m to 135m

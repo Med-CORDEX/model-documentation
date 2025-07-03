@@ -63,8 +63,8 @@ Other tables can be built. E.g. for specific components, showing any info collec
       <td>{{ model.atmosphere.native_horizontal_grid.resolution_x }}
           {{ model.atmosphere.native_horizontal_grid.horizontal_units }}</td>
       <td>{{ model.atmosphere.native_vertical_grid.n_z }}</td>
-      <td>{{ model.atmosphere.physics.radiation-sortwave.name }}</td>
-      <td>{{ model.atmosphere.physics.radiation-longwave.name }}</td>
+      <td>{{ model.atmosphere.physics.radiation_shortwave.name }}</td>
+      <td>{{ model.atmosphere.physics.radiation_longwave.name }}</td>
       <td>{{ model.atmosphere.physics.convection.name }}</td>
       <td>{{ model.atmosphere.physics.microphysics.name }}</td>
       <td>{{ model.atmosphere.physics.boundary-layer.name }}</td>

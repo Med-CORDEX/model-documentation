@@ -51,7 +51,7 @@ atmosphere:
     # non-EMD
     n_cells_full: 640x432
     n_cells_buffer: 8
-  native-vertical-grid: &atmosphere-vgrid
+  native_vertical_grid: &atmosphere-vgrid
     description:
     coordinate: atmosphere_hybrid_height_coordinate
     n_z: 51
@@ -62,13 +62,13 @@ atmosphere:
   nudging: LBC # ( LBC | spectral | grid )
   hydrostatic: yes
   physics:
-    radiation-shortwave:
+    radiation_shortwave:
       name: RRTMG
       description: 
       references: 
         - citation:
           doi:
-    radiation-longwave:
+    radiation_longwave:
       name: RRTMG
       description: Rapid radiative transfer model
       references:
@@ -80,7 +80,7 @@ atmosphere:
       references:
         - citation: Guérémy (2011)
           doi: https://doi.org/
-    shallow-convection:
+    shallow_convection:
       name: 
       description: 
       references:
@@ -92,7 +92,7 @@ atmosphere:
       references:
         - citation: 
           doi: 
-    boundary-layer:
+    boundary_layer:
       name: YSU
       description: 
       references:
@@ -176,7 +176,7 @@ ocean:
     mean_resolution_km:  
     horizontal_units: degree
     n_cells: 567x264
-  native-vertical-grid:
+  native_vertical_grid:
     description: >
       75 vertical levels using a vertical z-coordinate with partial step bathymetry
       formulation (Barnier et al., 2006), from 1m to 135m
