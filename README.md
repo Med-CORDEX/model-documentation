@@ -1,3 +1,5 @@
+test
+
 # Med-CORDEX model documentation
 
 This is currently a test site to document the coupled regional climate models used in the [Med-CORDEX](https://medcordex.eu) initiative (Phase 3) contributing to [CORDEX-CMIP6](https://www.cordex.org).
