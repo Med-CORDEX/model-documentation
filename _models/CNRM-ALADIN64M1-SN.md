@@ -1,6 +1,6 @@
 ---
 name: CNRM-ALADIN64M1-SN
-family: CNRM-ALADIN-SN
+family: CNRM-ALADIN
 dynamic_components:
   - aerosol
   - atmosphere
@@ -13,29 +13,32 @@ omitted_components:
   - land_ice
   - ocean_biogeochemistry
 description: >
-  Regional Climate System models allow to reproduce medium scale atmospheric and oceanic
+  Regional Climate Models allow to reproduce medium scale atmospheric 
   phenomena on periods going from present time hindcast to scenarios for the 21st century.
-  Atmosphere, aerosol, land surface and sea-ice are grouped in one executable (ALADIN),
+  Atmosphere, aerosol, land surface and sea ice are grouped in one executable (ALADIN),
   river routing (CTRIP), ocean (NEMOMED12); the models are coupled with OASIS3-MCT,
-  the outputs are managed by XIOS. Each version of CNRM-RCSM6 uses the last versions of
-  ALADIN, CTRIP and NEMOMED12 available at a given time.
+  the outputs are managed by XIOS. Each version of CNRM-ALADIN uses the last versions of
+  ALADIN and CTRIP available at a given time. This simulation nickname is ALDERA4 as this is the 4th generation of the
+  ALDERA dataset that is a well-known dataset produced at CNRM. This dataset is considered as a poor-man regional reanalysis
+  for Mediterranean area. It can used to replace observations when missing and suitable. In particular it is used as a air-sea forcings
+  for long-term Mediterranean Sea model runs.
 calendar: standard # inherited|standard|365_day|360_day
 release_year: 2023
 references:
-  - citation: Sevault (2024)
-    doi: https://doi.org/10.5281/zenodo.11066601
-  - citation: Darmaraki et al. (2019)
-    doi: https://doi.org/10.1029/2019GL082933
+  - citation: Nabat et al. (2020)
+    doi: https://doi.org/10.5194/acp-20-8315-2020
+  - SiMed web page: https://confluence-meteofrance.atlassian.net/wiki/spaces/SiMED/overview 
 
 # non-EMD (some of these could be retrieved from model registration info)
 label: CNRM-ALADIN64M1-SN
 label_extended: CNRM-ALADIN regional climate model, version 6.4 M1 (Med-CORDEX domain) with spectral nudging
 parent:
-  name: CNRM-RCSM6
+  name: CNRM-ALADIN64M1-1
   description: CNRM-RCSM6B differs from its parent (CNRM-RCSM6) mainly in ...
   references:
-    - citation: Sevault (2024)
-      doi: https://doi.org/10.5281/zenodo.11066601
+    - citation: Nabat et al. (2020)
+      doi: https://doi.org/10.5194/acp-20-8315-2020
+
 flux_correction: no
 
 atmosphere:
@@ -51,7 +54,6 @@ atmosphere:
   code_base:
   coupled_with:
     - land_surface
-    - ocean
     - sea_ice
   native_horizontal_grid: &atmosphere-hgrid
     description: 
