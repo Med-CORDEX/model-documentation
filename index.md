@@ -3,7 +3,6 @@ layout: narrowmar
 ---
 
 A brief summary table of all Med-CORDEX models and their basic components:
-<p style="color:red; font-weight:bold;">This site is under construction. Model details cannot be trusted at all.</p>
 
 <table>
   <thead>
